@@ -47,9 +47,16 @@ const background2 = new Background(1000, 0, 1000, 640, speed);
 document.addEventListener('keydown', (e) => {
   // e.preventDefault();
   switch (e.keyCode) {
-    case 32: //space bar
+    // case 32: //space bar
+    case 38: //up arrow
       if (pressed === false) {
         player.moveUp(speed);
+        pressed = true;
+      }
+      break;
+    case 40: //down arrow
+      if (pressed === false) {
+        player.moveDown(speed);
         pressed = true;
       }
       break;

@@ -77,3 +77,8 @@ Bird.prototype.moveUp = function (speed) {
   this.fallSpeed = 0;
   this.ySpeed = -speed;
 };
+
+Bird.prototype.moveDown = function (speed) {
+  // this.fallSpeed = 0;
+  this.ySpeed = speed + 1;
+}
