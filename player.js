@@ -4,7 +4,7 @@ function Bird(x, y, width, height) {
   this.width = width;
   this.height = height;
   this.fallSpeed = 0;
-  this.forwardSpeed = 0;
+  this.ySpeed = 0;
 
   // needed to make sure the player is not scoring many times at once
   this.scored = false;
@@ -21,7 +21,7 @@ Bird.prototype.draw = function () {
 Bird.prototype.update = function () {
   // Handle the gravity
   this.fallSpeed += 0.1; // This speed grows every time this function is called
-  this.y += this.fallSpeed + this.forwardSpeed; // Gravity effect is achieved!
+  this.y += this.fallSpeed + this.ySpeed; // Gravity effect is achieved!
 
   // Check if the player dies first
 
@@ -57,7 +57,7 @@ Bird.prototype.update = function () {
 };
 
 // Reset the gravity and move the player up to give the jumping effect
-Bird.prototype.moveUp = (speed) => {
+Bird.prototype.moveUp = function (speed) {
   this.fallSpeed = 0;
-  this.forwardSpeed = -speed;
+  this.ySpeed = -speed;
 };
