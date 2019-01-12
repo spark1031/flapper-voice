@@ -7,7 +7,7 @@ function Pipe(x, y, width, height, speed) {
 }
 
 Pipe.prototype.draw = function () {
-  ctx.drawImage(sprites, 360, 0, 80, 80, this.x, this.y, this.width, this.height);
+  ctx.drawImage(ice, 0, 0, 155, 155, this.x, this.y, this.width, this.height);
 };
 
 //pipe moves to left (@constant speed)
@@ -15,7 +15,7 @@ Pipe.prototype.update = function () {
   this.x -= this.speed;
 
   if (this.x + this.width <= 0) {
-    this.x = 360;
+    this.x = 1000;
 
     //if top pipe
     if (this.y <= 320) {

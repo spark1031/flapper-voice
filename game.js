@@ -11,6 +11,8 @@ ctx.lineWidth = 2;
 
 // Load sprites
 const sprites = document.getElementById('sprites');
+const background = document.getElementById('background');
+const ice = document.getElementById('ice');
 
 // Custom function for writing a stroked text
 function drawText(text, x, y) {
@@ -34,10 +36,12 @@ let isGameOver = false; // Flag variable, determines if the game is over or not
 
 // Objects
 const player = new Bird(32, 240, 80, 70);
-const pipeTop = new Pipe(360, 0, 80, 300, 2);
-const pipeBottom = new Pipe(360, 480, 80, 300, 2);
-const background1 = new Background(0, 0, 360, 640, 2);
-const background2 = new Background(360, 0, 360, 640, 2);
+const pipeTop1 = new Pipe(360, 0, 80, 300, speed);
+const pipeBottom1 = new Pipe(360, 480, 80, 300, speed);
+const pipeTop2 = new Pipe(860, 0, 80, 300, speed);
+const pipeBottom2 = new Pipe(860, 480, 80, 300, speed);
+const background1 = new Background(0, 0, 1000, 640, speed);
+const background2 = new Background(1000, 0, 1000, 640, speed);
 
 //Keyboard Controls
 document.addEventListener('keydown', (e) => {
@@ -71,12 +75,28 @@ document.addEventListener('keyup', (e) => {
   pressed = false;
 }, false);
 
+const voice = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
+const tuner = new Wad.Poly();
+tuner.setVolume(0); // If you're not using headphones, you can eliminate microphone feedback by muting the output from the tuner.
+tuner.add(voice);
+
+// voice.play(); // You must give your browser permission to access your microphone before calling play().
+
+// tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
+
+var logPitch = function () {
+  console.log(tuner.pitch, tuner.noteName);
+  requestAnimationFrame(logPitch);
+};
+
 //Main Game Loop
 function gameLoop() {
   if (!isPaused && !isGameOver) {
     player.update();
-    pipeTop.update();
-    pipeBottom.update();
+    pipeTop1.update();
+    pipeBottom1.update();
+    // pipeTop2.update();
+    // pipeBottom2.update();
     background1.update();
     background2.update();
   }
@@ -110,8 +130,12 @@ function initializeGame() {
   background2.draw();
 
   player.draw();
-  pipeTop.draw();
-  pipeBottom.draw();
+  pipeTop1.draw();
+  pipeBottom1.draw();
+  // pipeTop2.draw();
+  // pipeBottom2.draw();
+  tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
+
 }
 
 //ENTRY POINT (starts the game)

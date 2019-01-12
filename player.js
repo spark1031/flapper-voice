@@ -27,26 +27,43 @@ Bird.prototype.update = function () {
 
   // Basic AABB Collision
   // Check if the player touches a pipe on the x axis first
-  if (this.x + this.width >= pipeTop.x && this.x <= pipeTop.x + pipeTop.width) {
+  if (this.x + this.width >= pipeTop1.x && this.x <= pipeTop1.x + pipeTop1.width) {
     // Then check if it touches any of the pipes on the y axis
-    if (this.y + this.height >= pipeBottom.y || this.y <= pipeTop.y + pipeTop.height) {
+    if (this.y + this.height >= pipeBottom1.y || this.y <= pipeTop1.y + pipeTop1.height) {
       isGameOver = true;
     } else {
       if (!this.scored) {
         score++;
+        console.log(tuner.pitch);
         this.scored = true;
       }
     }
   }
+
+  // if (this.x + this.width >= pipeTop2.x && this.x <= pipeTop2.x + pipeTop2.width) {
+  //   // Then check if it touches any of the pipes on the y axis
+  //   if (this.y + this.height >= pipeBottom2.y || this.y <= pipeTop2.y + pipeTop2.height) {
+  //     isGameOver = true;
+  //   } else {
+  //     if (!this.scored) {
+  //       score++;
+  //       this.scored = true;
+  //     }
+  //   }
+  // }
   // Die when hit the ground 
   if (this.y >= 600) {
     isGameOver = true;
   }
 
   // Player can score again now that the pipe is reset
-  if (pipeTop.x >= 360) {
+  if (pipeTop1.x >= 360) {
     this.scored = false;
   }
+
+  // if (pipeTop2.x >= 360) {
+  //   this.scored = false;
+  // }
 
   // Handle the animation based on going up or down
   if (this.fallSpeed <= 1) {
