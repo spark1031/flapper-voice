@@ -84,10 +84,12 @@ tuner.add(voice);
 
 // tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
 
-var logPitch = function () {
-  console.log(tuner.pitch, tuner.noteName);
-  requestAnimationFrame(logPitch);
+const logPitch = function () {
+  console.log(tuner.pitch);
+  window.requestAnimationFrame(logPitch);
 };
+
+
 
 //Main Game Loop
 function gameLoop() {
@@ -99,6 +101,7 @@ function gameLoop() {
     // pipeBottom2.update();
     background1.update();
     background2.update();
+    logPitch();
   }
 
   initializeGame();
