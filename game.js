@@ -75,19 +75,20 @@ document.addEventListener('keyup', (e) => {
   pressed = false;
 }, false);
 
-const voice = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
-const tuner = new Wad.Poly();
-tuner.setVolume(0); // If you're not using headphones, you can eliminate microphone feedback by muting the output from the tuner.
-tuner.add(voice);
+//PITCH CONTROLS
+// const voice = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
+// const tuner = new Wad.Poly();
+// tuner.setVolume(0); // If you're not using headphones, you can eliminate microphone feedback by muting the output from the tuner.
+// tuner.add(voice);
 
-// voice.play(); // You must give your browser permission to access your microphone before calling play().
+// // voice.play(); // You must give your browser permission to access your microphone before calling play().
 
-// tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
+// // tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
 
-const logPitch = function () {
-  console.log(tuner.pitch);
-  window.requestAnimationFrame(logPitch);
-};
+// const logPitch = function () {
+//   console.log(tuner.pitch);
+//   window.requestAnimationFrame(logPitch);
+// };
 
 
 
@@ -101,7 +102,8 @@ function gameLoop() {
     // pipeBottom2.update();
     background1.update();
     background2.update();
-    logPitch();
+    //PITCH CONTROLS: log pitch
+    // logPitch();
   }
 
   initializeGame();
@@ -137,7 +139,9 @@ function initializeGame() {
   pipeBottom1.draw();
   // pipeTop2.draw();
   // pipeBottom2.draw();
-  tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
+
+  //PITCH CONTROLS - calculate pitch
+  // tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
 
 }
 

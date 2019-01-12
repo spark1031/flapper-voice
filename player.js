@@ -34,7 +34,6 @@ Bird.prototype.update = function () {
     } else {
       if (!this.scored) {
         score++;
-        console.log(tuner.pitch);
         this.scored = true;
       }
     }
