@@ -12,7 +12,18 @@ ctx.lineWidth = 2;
 // Load sprites
 const sprites = document.getElementById('sprites');
 const background = document.getElementById('background');
+// const iceTop = document.getElementById('ice-top');
+// const iceBottom = document.getElementById('ice-bottom');
 const ice = document.getElementById('ice');
+
+// Load audio
+const flyAudio = new Audio();
+flyAudio.src = "sounds/fly.mp3";
+const diveAudio = new Audio();
+diveAudio.src = "sounds/dive.mp3";
+const themeAudio = new Audio('sounds/theme.mp3');
+themeAudio.loop = true;
+
 
 // Custom function for writing a stroked text
 function drawText(text, x, y) {
@@ -30,22 +41,20 @@ function drawTint(x, y, w, h) {
 // Variables
 let speed = 2;
 let score = 0; // Will hold the global score
+let distanceTraveled = 0;
 let pressed = false; // Flag variable, determines if a key is pressed
 let isPaused = true; // Flag variable, determines if the game is paused or unpaused
 let isGameOver = false; // Flag variable, determines if the game is over or not
 
 // Objects
 const player = new Bird(32, 240, 80, 70);
-const pipeTop1 = new Pipe(360, 0, 80, 300, speed);
-const pipeBottom1 = new Pipe(360, 480, 80, 300, speed);
-const pipeTop2 = new Pipe(860, 0, 80, 300, speed);
-const pipeBottom2 = new Pipe(860, 480, 80, 300, speed);
+const pipe1 = new Pipe(ice, 900, true, 80, speed);
+const pipe2 = new Pipe(ice, 400, false, 80, speed);
 const background1 = new Background(0, 0, 1000, 640, speed);
 const background2 = new Background(1000, 0, 1000, 640, speed);
 
 //Keyboard Controls
 document.addEventListener('keydown', (e) => {
-  // e.preventDefault();
   switch (e.keyCode) {
     // case 32: //space bar
     case 38: //up arrow
@@ -61,6 +70,8 @@ document.addEventListener('keydown', (e) => {
       }
       break;
     case 13: //enter button (start new game/unpause)
+      themeAudio.play();
+
       if (isGameOver) {
         window.location.reload();
       }
@@ -78,7 +89,6 @@ document.addEventListener('keydown', (e) => {
 }, false);
 
 document.addEventListener('keyup', (e) => {
-  // e.preventDefault();
   pressed = false;
 }, false);
 
@@ -98,22 +108,22 @@ document.addEventListener('keyup', (e) => {
 // };
 
 
-
 //Main Game Loop
 function gameLoop() {
   if (!isPaused && !isGameOver) {
     player.update();
-    pipeTop1.update();
-    pipeBottom1.update();
+    pipe1.update();
+    pipe2.update();
     // pipeTop2.update();
     // pipeBottom2.update();
     background1.update();
     background2.update();
+    distanceTraveled++;
     //PITCH CONTROLS: log pitch
     // logPitch();
   }
 
-  initializeGame();
+  setupGame();
 
   if (isPaused) {
     drawTint(0, 0, 360, 640);
@@ -126,6 +136,7 @@ function gameLoop() {
     drawTint(0, 0, 360, 640);
     drawText('Game Over', 180, 310);
     drawText('Score: ' + score, 180, 380);
+    themeAudio.pause();
   } else {
     //show score if game is in play
     drawTint(0, 0, 360, 64);
@@ -135,15 +146,15 @@ function gameLoop() {
   window.requestAnimationFrame(gameLoop);
 }
 
-function initializeGame() {
+function setupGame() {
   ctx.clearRect(0, 0, 360, 640);
 
   background1.draw();
   background2.draw();
 
   player.draw();
-  pipeTop1.draw();
-  pipeBottom1.draw();
+  pipe1.draw();
+  pipe2.draw();
   // pipeTop2.draw();
   // pipeBottom2.draw();
 
