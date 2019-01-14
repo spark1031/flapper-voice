@@ -8,16 +8,22 @@
   <title>Flappy Bird</title>
   <!-- PITCH CONTROLS -->
   <!-- <script src="wad-master/build/wad.min.js"></script> -->
+  <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="game.css">
   <img class="hidden" src="images/sprite.png" id="sprites">
   <!-- <img class="hidden" src="images/ice-cube-top.png" id="ice-top">
   <img class="hidden" src="images/ice-cube-bottom.png" id="ice-bottom"> -->
-  <img class="hidden" src="images/background-winter.png" id="background">
+  <img class="hidden" src="images/background-winter.png" id="background" class="game-background">
   <img class="hidden" src="images/ice-cube3.png" id="ice">
 </head>
 
 <body>
-  <canvas width="1000" height="640" id="game-canvas" class="canvas"></canvas>
+  <div id="splash-canvas" class="splash">
+    <div class="start-button" id="start-button">
+      <div class="start-text-box">START</div>
+    </div>
+  </div>
+  <canvas width="1000" height="640" id="game-canvas" class="game hidden"></canvas>
   <script src="player.js"></script>
   <script src="pipe.js"></script>
   <script src="background.js"></script>

@@ -1,6 +1,10 @@
 //GLOBAL VARIABLES
 
-// Establish screen
+// Establish splash screen
+const splash = document.getElementById('splash-canvas');
+
+
+// Establish game screen
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 ctx.font = 'bold 56px Comic Sans MS';
@@ -8,6 +12,19 @@ ctx.font = 'bold 56px Comic Sans MS';
 ctx.textAlign = 'center';
 ctx.lineWidth = 2;
 // ctx.strokeStyle = 'black';
+
+// Custom function for writing a stroked text
+function drawText(text, x, y) {
+  ctx.fillStyle = 'white';
+  ctx.fillText(text, x, y);
+  ctx.strokeText(text, x, y);
+}
+
+// Custom function for drawing a tint on the screen
+function drawTint(x, y, w, h) {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+  ctx.fillRect(x, y, w, h);
+}
 
 // Load sprites
 const sprites = document.getElementById('sprites');
@@ -24,26 +41,13 @@ diveAudio.src = "sounds/dive.mp3";
 const themeAudio = new Audio('sounds/theme.mp3');
 themeAudio.loop = true;
 
-
-// Custom function for writing a stroked text
-function drawText(text, x, y) {
-  ctx.fillStyle = 'white';
-  ctx.fillText(text, x, y);
-  ctx.strokeText(text, x, y);
-}
-
-// Custom function for drawing a tint on the screen
-function drawTint(x, y, w, h) {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-  ctx.fillRect(x, y, w, h);
-}
-
 // Variables
-let speed = 2;
+let level = 1;
+let speed = 1 + (level * 0.7);
 let score = 0; // Will hold the global score
 let distanceTraveled = 0;
 let pressed = false; // Flag variable, determines if a key is pressed
-let isPaused = true; // Flag variable, determines if the game is paused or unpaused
+let isPaused = false; // Flag variable, determines if the game is paused or unpaused
 let isGameOver = false; // Flag variable, determines if the game is over or not
 
 // Objects
@@ -51,7 +55,11 @@ const player = new Bird(32, 240, 80, 70);
 const pipe1 = new Pipe(ice, 900, true, 80, speed);
 const pipe2 = new Pipe(ice, 400, false, 80, speed);
 const background1 = new Background(0, 0, 1000, 640, speed);
+// background1.style.height = '640px';
+// background1.style.width = '1000px';
 const background2 = new Background(1000, 0, 1000, 640, speed);
+// background2.style.height = '640px';
+// background2.style.width = '1000px';
 
 //Keyboard Controls
 document.addEventListener('keydown', (e) => {
@@ -70,8 +78,6 @@ document.addEventListener('keydown', (e) => {
       }
       break;
     case 13: //enter button (start new game/unpause)
-      themeAudio.play();
-
       if (isGameOver) {
         window.location.reload();
       }
@@ -114,40 +120,47 @@ function gameLoop() {
     player.update();
     pipe1.update();
     pipe2.update();
-    // pipeTop2.update();
-    // pipeBottom2.update();
     background1.update();
     background2.update();
     distanceTraveled++;
     //PITCH CONTROLS: log pitch
     // logPitch();
   }
-
   setupGame();
 
-  if (isPaused) {
-    drawTint(0, 0, 360, 640);
-    drawText('Hit "Enter"', 180, 300);
-    drawText('to play!', 180, 380);
-    if (score > 0) {
-      drawText(score, 180, 52);
-    }
-  } else if (isGameOver) {
-    drawTint(0, 0, 360, 640);
+  if (isGameOver) {
+    drawTint(0, 0, 1000, 640);
     drawText('Game Over', 180, 310);
     drawText('Score: ' + score, 180, 380);
     themeAudio.pause();
   } else {
     //show score if game is in play
-    drawTint(0, 0, 360, 64);
+    drawTint(0, 0, 1000, 64);
     drawText(score, 180, 52);
   }
+  // if (isPaused) {
+  //   drawTint(0, 0, 1000, 640);
+  //   drawText('Hit "Enter"', 180, 300);
+  //   drawText('to play!', 180, 380);
+  //   if (score > 0) {
+  //     drawText(score, 180, 52);
+  //   }
+  // } else if (isGameOver) {
+  //   drawTint(0, 0, 1000, 640);
+  //   drawText('Game Over', 180, 310);
+  //   drawText('Score: ' + score, 180, 380);
+  //   themeAudio.pause();
+  // } else {
+  //   //show score if game is in play
+  //   drawTint(0, 0, 1000, 64);
+  //   drawText(score, 180, 52);
+  // }
 
   window.requestAnimationFrame(gameLoop);
 }
 
 function setupGame() {
-  ctx.clearRect(0, 0, 360, 640);
+  ctx.clearRect(0, 0, 1000, 640);
 
   background1.draw();
   background2.draw();
@@ -160,8 +173,18 @@ function setupGame() {
 
   //PITCH CONTROLS - calculate pitch
   // tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
-
 }
 
+window.onload = function () {
+  console.log("hello");
+  const startButton = document.getElementById("start-button");
+  startButton.addEventListener("click", () => {
+    splash.classList.add("hidden");
+    canvas.classList.remove("hidden");
+    themeAudio.play();
+    gameLoop();
+  });
+};
+
 //ENTRY POINT (starts the game)
-gameLoop(); 
+// gameLoop(); 
