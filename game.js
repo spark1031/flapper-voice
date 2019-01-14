@@ -41,6 +41,8 @@ diveAudio.src = "sounds/dive.mp3";
 const themeAudio = new Audio('sounds/theme.mp3');
 themeAudio.loop = true;
 
+
+
 // Variables
 let level = 1;
 let speed = 1 + (level * 0.7);
@@ -55,11 +57,7 @@ const player = new Bird(32, 240, 80, 70);
 const pipe1 = new Pipe(ice, 900, true, 80, speed);
 const pipe2 = new Pipe(ice, 400, false, 80, speed);
 const background1 = new Background(0, 0, 1000, 640, speed);
-// background1.style.height = '640px';
-// background1.style.width = '1000px';
 const background2 = new Background(1000, 0, 1000, 640, speed);
-// background2.style.height = '640px';
-// background2.style.width = '1000px';
 
 //Keyboard Controls
 document.addEventListener('keydown', (e) => {
@@ -97,6 +95,18 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
   pressed = false;
 }, false);
+
+//VOICE CONTROLS
+const voiceControls = new anycontrol();
+voiceControls.addCommand("up", function () {
+  player.moveUp();
+});
+
+voiceControls.addCommand("down", function () {
+  player.moveDown();
+});
+
+// voiceControls.start();
 
 //PITCH CONTROLS
 // const voice = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
@@ -176,7 +186,6 @@ function setupGame() {
 }
 
 window.onload = function () {
-  console.log("hello");
   const startButton = document.getElementById("start-button");
   startButton.addEventListener("click", () => {
     splash.classList.add("hidden");

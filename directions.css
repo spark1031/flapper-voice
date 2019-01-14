@@ -1,0 +1,142 @@
+.direction {
+  width: 1000px;
+  height: 640px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: rgba(1, 1, 1, 0.5); */
+  background-image: url('images/background-snow1.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Amatic SC', cursive;
+}
+
+.game-background {
+  width: 500px;
+  color: orange;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 23px;
+  margin: 0 0 23px 0;
+  padding-top: 20px;
+}
+
+.game-controls {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls-text {
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 23px;
+  margin: 0 0 23px 0;
+  color: #6ABED0;
+  padding-bottom: 10px;
+}
+
+.control-options {
+  display: flex;
+  justify-content: space-evenly;
+  width: 800px;
+}
+
+.keyboard-controls {
+  width: 40%;
+  align-items: center;
+
+}
+
+.keyboard-title {
+  animation: Float 1s linear infinite;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+  line-height: 46px;
+  font-size: 46px;
+  margin: 0 0 23px 0;
+  background:	#8ADAE3;
+  border: 2px solid black;
+  border-radius: 4px;
+  color: #00B6F1;
+  cursor: pointer;
+  width: 150px;
+  height: 60px;
+  /* background-image: url('images/play-button.png'); */
+  letter-spacing: 2px;
+  margin-top: -6px;
+  outline: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard-legend {
+  display: flex;
+
+}
+
+.space-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: orange;
+  font-family: 'Amatic SC', cursive;
+  font-size: 18px;
+  font-weight: 1000;
+  margin: 0 0 23px 0;
+  width: 95px;
+}
+
+.keyboard-arrows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  padding-left: 20px;
+}
+
+.space-bar {
+  width: 120px;
+}
+
+.up-arrow {
+  width: 40px;
+}
+
+.down-arrow {
+  width: 40px;
+}
+
+.voice-title {
+  animation: Float 1s linear infinite;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+  line-height: 46px;
+  font-size: 46px;
+  margin: 0 0 23px 0;
+  background:	#8ADAE3;
+  border: 2px solid black;
+  border-radius: 4px;
+  color: #00B6F1;
+  cursor: pointer;
+  width: 150px;
+  height: 60px;
+  /* background-image: url('images/play-button.png'); */
+  letter-spacing: 2px;
+  margin-top: -6px;
+  outline: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

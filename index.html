@@ -9,18 +9,61 @@
   <!-- PITCH CONTROLS -->
   <!-- <script src="wad-master/build/wad.min.js"></script> -->
   <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="splash.css">
+  <link rel="stylesheet" href="directions.css">
   <link rel="stylesheet" href="game.css">
   <img class="hidden" src="images/sprite.png" id="sprites">
   <!-- <img class="hidden" src="images/ice-cube-top.png" id="ice-top">
   <img class="hidden" src="images/ice-cube-bottom.png" id="ice-bottom"> -->
   <img class="hidden" src="images/background-winter.png" id="background" class="game-background">
   <img class="hidden" src="images/ice-cube3.png" id="ice">
+  <script src="https://unpkg.com/anycontrol/dist/index.umd.min.js"></script>
 </head>
 
 <body>
-  <div id="splash-canvas" class="splash">
+  <div id="splash-canvas" class="splash hidden">
+    <div class="splash-logo">
+      <div class="splash-logo-text">Flappy Bird</div>
+      <img src="images/birdlogo2.png" class="logo-image">
+    </div>
+    <div class="splash-logo-subtext">Winter Edition</div>
     <div class="start-button" id="start-button">
-      <div class="start-text-box">START</div>
+      <div class="start-text-box">ENTER</div>
+    </div>
+  </div>
+  <div id="direction-canvas" class="direction">
+    <div class="splash-logo-text">Flappy Bird</div>
+    <div class="game-background">
+      The time has come for Flappy Bird to migrate south for the winter. Help Flappy avoid the ice columns and navigate
+      this treacherous terrain to join the rest of her flock in the south.
+    </div>
+    <div class="game-controls">
+      <div class="controls-text">Please pick a control option to START:</div>
+      <div class="control-options">
+        <div class="keyboard-controls">
+          <div class="keyboard-title">
+            KEYBOARD
+          </div>
+          <div class="keyboard-legend">
+            <div class="space-bar-wrapper">
+              <div class="space-bar-text">
+                Shoots fire to melt ice columns
+              </div>
+              <img src="images/space-bar.png" class="space-bar">
+            </div>
+            <div class="keyboard-arrows">
+              <img src="images/up-arrow.png" class="up-arrow">
+              <img src="images/down-arrow.png" class="down-arrow">
+            </div>
+          </div>
+
+        </div>
+        <div class="voice-controls">
+          <div class="voice-title">
+            VOICE
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <canvas width="1000" height="640" id="game-canvas" class="game hidden"></canvas>
