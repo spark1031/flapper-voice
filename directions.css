@@ -5,6 +5,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 20px;
   /* background-color: rgba(1, 1, 1, 0.5); */
   background-image: url('images/background-snow1.gif');
   background-repeat: no-repeat;
@@ -80,6 +81,11 @@
   align-items: center;
 }
 
+.keyboard-title:hover {
+  background: #00B6F1;
+  color:	#8ADAE3;
+}
+
 .keyboard-legend {
   display: flex;
 
@@ -117,6 +123,12 @@
   width: 40px;
 }
 
+.voice-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .voice-title {
   animation: Float 1s linear infinite;
   font-family: 'Amatic SC', cursive;
@@ -139,4 +151,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.voice-title:hover {
+  background: #00B6F1;
+  color:	#8ADAE3;
+}
+
+
+
+.voice-legend {
+  display: flex;
+  flex-direction: column;
+  color: orange;
+  font-family: 'Amatic SC', cursive;
+  font-size: 18px;
+  font-weight: 1000;
+  margin: 0 0 23px 0;
+  margin-top: -10px;
+}
+
+.voice-legend-subtext {
+  color: orange;
+  font-family: 'Amatic SC', cursive;
+  font-size: 24px;
+  font-weight: 1000;
+  /* margin: 0 0 23px 0; */
 }
