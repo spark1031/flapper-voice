@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flappy Bird</title>
+  <title>Flapper</title>
   <!-- PITCH CONTROLS -->
   <!-- <script src="wad-master/build/wad.min.js"></script> -->
   <!-- <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" /> -->
@@ -24,7 +24,7 @@
 <body>
   <div id="splash-canvas" class="splash">
     <div class="splash-logo">
-      <div class="splash-logo-text">Flappy Bird</div>
+      <div class="splash-logo-text">Flapper</div>
       <img src="images/birdlogo2.png" class="logo-image">
     </div>
     <div class="splash-logo-subtext">Winter Edition</div>
@@ -33,9 +33,9 @@
     </div>
   </div>
   <div id="direction-canvas" class="direction hidden">
-    <div class="splash-logo-text">Flappy Bird</div>
+    <div class="splash-logo-text">Flapper</div>
     <div class="game-background">
-      The time has come for Flappy Bird to migrate south for the winter. Help Flappy avoid the ice columns and navigate
+      The time has come for Flapper to migrate south for the winter. Help Flapper avoid the ice columns and navigate
       this treacherous terrain to join the rest of her flock in the south.
     </div>
     <div class="game-controls">
@@ -47,10 +47,14 @@
           </div>
           <div class="keyboard-legend">
             <div class="space-bar-wrapper">
-              <div class="space-bar-text">
+              <!-- <div class="space-bar-text">
                 Shoots fire to melt ice columns
               </div>
-              <img src="images/space-bar.png" class="space-bar">
+              <img src="images/space-bar.png" class="space-bar"> -->
+              <div class="space-bar-text">
+                Pause
+              </div>
+              <img src="images/esc.png" class="space-bar">
             </div>
             <div class="keyboard-arrows">
               <img src="images/up-arrow.png" class="up-arrow">
@@ -73,18 +77,21 @@
             <div class="voice-down">
               'DOWN': to move down
             </div>
-            <div class="voice-shoot">
+            <!-- <div class="voice-shoot">
               'SHOOT': to shoot fire
+            </div> -->
+            <div class="voice-shoot">
+              'PAUSE': to pause game
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <canvas width="1000" height="640" id="game-canvas" class="game hidden"></canvas>
-  <div id="score-bar" class="score hidden"></div>
-  <div id="play-again-button" class="play-again-button hidden"></div>
+  <div class="game-wrapper">
+    <canvas width="1000" height="640" id="game-canvas" class="game hidden"></canvas>
+    <div id="score-bar" class="score hidden"></div>
+  </div>
   <div id="pause-page" class="pause-page hidden">
     <div class="pause-text">
       PAUSED

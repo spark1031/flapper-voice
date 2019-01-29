@@ -94,25 +94,27 @@
 .space-bar-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   color: orange;
   font-family: 'Amatic SC', cursive;
   font-size: 18px;
   font-weight: 1000;
-  margin: 0 0 23px 0;
   width: 95px;
+  padding-top: 10px;
 }
 
 .keyboard-arrows {
   display: flex;
   flex-direction: column;
   margin-top: 35px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 .space-bar {
-  width: 120px;
+  height: 40px;
+  /* width: 120px; */
 }
 
 .up-arrow {
