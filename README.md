@@ -29,7 +29,7 @@ HTML5 canvas animation sprite sheets were made for each game object (example bel
 
 Bird object sprite sheet:
 
-![sprite-sheet](https://github.com/spark1031/flapper-voice/blob/master/images/sprite.png)
+![sprite-sheet](https://github.com/spark1031/flapper-voice/blob/master/images/bird.png)
 
 
 ### Collision Detection: 
