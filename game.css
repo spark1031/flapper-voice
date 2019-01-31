@@ -33,8 +33,6 @@ body {
 }
 
 .score {
-  /* animation: moveScoreBox 1s; */
-  /* margin-top: 580px; */
   margin-top: 80vh;
   width: 150px;
   height: 50px;
@@ -157,3 +155,4 @@ body {
   text-align: center;
   
 }
+
