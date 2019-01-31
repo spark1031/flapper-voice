@@ -37,7 +37,7 @@ Bird object sprite sheet:
 
 This project utilized the axis-aligned bounding boxes (AABB) algorithm to detect collision between two game entities. Upon collision detection, the player is notified that the game is over and shown his/her final score.
 
-![collision-detection](https://media.giphy.com/media/4T5xwp4iumC40kb5Mz/source.gif)
+![collision-detection](https://media.giphy.com/media/lzILUlslLHlmrPhbTW/source.gif)
 
 ```javascript
   //AABB collision detection logic
