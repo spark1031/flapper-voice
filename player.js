@@ -34,7 +34,6 @@ Bird.prototype.update = function () {
       if (this.x + this.width >= pipe.x && this.x <= pipe.x + pipe.width) {
         this.scored = false;
         if (this.y <= pipe.height) {
-          console.log("hit top pipe");
           isGameOver = true;
         }
       } else if (this.x > (pipe.x + pipe.width)) {
@@ -47,7 +46,6 @@ Bird.prototype.update = function () {
       if (this.x + this.width >= pipe.x && this.x <= pipe.x + pipe.width) {
         this.scored = false;
         if (this.y + this.height >= pipe.y) {
-          console.log('hit bottom pipe');
           isGameOver = true;
         }
       } else if (this.x > (pipe.x + pipe.width)) {
