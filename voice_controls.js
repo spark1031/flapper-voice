@@ -5,7 +5,6 @@ const VoiceControl = function () {
   this.spokenTranscript = '';
 
   this.recognition.onresult = (e) => {
-    console.log(e);
     if (typeof (e.results) === 'undefined') {
       this.recognition.stop();
       return;

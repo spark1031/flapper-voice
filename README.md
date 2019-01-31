@@ -57,3 +57,43 @@ This project utilized the axis-aligned bounding boxes (AABB) algorithm to detect
 ### Voice Commands: 
 *Players can control bird object's movement via voice commands*
 
+A custom VoiceControl object was created using Google's Speech Recognition API. The list of voice commands were placed into a 'commands' object and the commands vocalized by the player were captured, transcribed, and subsequently looked up in the 'commands' object with O(1) look up. 
+
+```javascript
+const VoiceControl = function () {
+  const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+  this.recognition = new SpeechRecognition();
+  this.commands = {};
+  this.spokenTranscript = '';
+
+  this.recognition.onresult = (e) => {
+    if (typeof (e.results) === 'undefined') {
+      this.recognition.stop();
+      return;
+    }
+
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      if (e.results[i].isFinal) {
+        this.spokenTranscript += e.results[i][0].transcript;
+      }
+    }
+
+    if (this.spokenTranscript !== '') {
+      this.spokenTranscript = this.spokenTranscript.toLowerCase().trim();
+      Object.keys(this.commands).forEach((command) => {
+        if (this.spokenTranscript === command) {
+          this.commands[command]();
+        }
+      });
+      this.spokenTranscript = '';
+    }
+  };
+
+  this.recognition.onend = (e) => {
+    if (this.recognition.continuous) {
+      this.recognition.start();
+    }
+  };
+  return this;
+};
+```
